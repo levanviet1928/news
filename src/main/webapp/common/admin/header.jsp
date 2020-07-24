@@ -14,14 +14,14 @@
 			<ul class="nav ace-nav">
 				<li class="light-blue dropdown-modal">
 					<a data-toggle="dropdown"href="#" class="dropdown-toggle"> 
-					<small>Welcome,</small> [tênquản trị viên]
+					<small>Welcome,</small> [tên quản trị viên]
 					</a>
 					<li class="light-blue dropdown-modal">
 						<a href="#"> <i class="ace-icon fa fa-power-off"></i>
 						Logout
 						</a>
 					</li>
-				</li>
+			
 			</ul>
 		</div>
 	</div>

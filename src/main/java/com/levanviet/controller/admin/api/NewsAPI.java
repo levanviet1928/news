@@ -1,25 +1,36 @@
-package com.levanviet.controller.webs;
+package com.levanviet.controller.admin.api;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = { "/trang-chu" })
-public class HomeController extends HttpServlet {
+import com.levanviet.model.NewsModel;
+import com.levanviet.service.INewsService;
+import com.levanviet.utils.HttpUtils;
+
+@WebServlet(urlPatterns = { "/api-admin-news" })
+public class NewsAPI extends HttpServlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5954704420543259140L;
+	private static final long serialVersionUID = -7310137193272453931L;
+
+	@Inject
+	INewsService newsService;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
-		rd.forward(req, resp);
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		NewsModel newsModel = HttpUtils.of(req.getReader()).toModel(NewsModel.class);
+		newsModel = newsService.saveNews(newsModel);
+		System.out.println(newsModel);
 	}
 
 	@Override
@@ -39,4 +50,5 @@ public class HomeController extends HttpServlet {
 		// TODO Auto-generated method stub
 		super.doDelete(req, resp);
 	}
+
 }

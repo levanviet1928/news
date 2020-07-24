@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<decorators defaultdir="/decorators">
+	<decorators defaultdir="/decorators">
 	<!-- file có /api thì ko cần apply UI -->
 	<excludes>
 		<pattern>/api*</pattern>
